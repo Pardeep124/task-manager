@@ -1,6 +1,8 @@
 
 # Smart Task Manager with AI Touch
 
+![Demo Video](client/src/assets/demo.gif)
+
 A full-stack web app for managing tasks efficiently with an AI-powered feature to auto-suggest priority and tags. Built with the **MERN stack** (MongoDB, Express, React, Node.js) and **Tailwind CSS** for styling.
 
 ---
