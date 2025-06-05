@@ -35,14 +35,21 @@ Your response:
 
   const aiMessage = chatCompletion.choices[0].message.content;
 
-  // Extract JSON from the response
-  const jsonMatch = aiMessage.match(/{[\s\S]*}/);
+  const jsonMatch = aiMessage.match(/{[\s\S]*?}/);
+
+  console.log("Full AI Message:", aiMessage);
+  console.log("Extracted JSON string:", jsonMatch ? jsonMatch[0] : null);
+
   if (!jsonMatch) {
-    return "No JSON response found";
+    throw new Error("No JSON response found in AI message.");
   }
 
-  const aiData = JSON.parse(jsonMatch[0]);
-  console.log(aiData);
+  let aiData;
+  try {
+    aiData = JSON.parse(jsonMatch[0]);
+  } catch (err) {
+    throw new Error("Failed to parse JSON from AI message: " + err.message);
+  }
   return aiData;
 };
 
